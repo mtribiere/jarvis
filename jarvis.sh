@@ -75,6 +75,7 @@ case "$OSTYPE" in
                 jv_os_version="$(cat /etc/*release | grep ^VERSION_ID= | cut -f2 -d= | tr -d '"')"
                 dependencies+=(alsamixer aplay arecord whiptail libsox-fmt-mp3)
             	jv_cache_folder="/dev/shm"
+		jv_version="$(cat $(pwd)/version.txt)"
                 ;;
     darwin*)    platform="osx"
                 jv_arch="$(uname -m)"
@@ -82,6 +83,7 @@ case "$OSTYPE" in
                 jv_os_version="$(sw_vers -productVersion)"
                 dependencies+=(osascript)
                 jv_cache_folder="/tmp"
+		jv_version="$(cat $(pwd)/version.txt)"
                 ;;
     *)          jv_error "ERROR: $OSTYPE is not a supported platform"
                 exit 1;;
